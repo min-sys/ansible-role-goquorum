@@ -83,7 +83,7 @@ All variables which can be overridden are stored in [defaults/main.yml](defaults
 | `goquorum_graphql_virtual_hosts` | ["all"] | Comma separated list of virtual hostnames from which to accept requests |
 | `goquorum_bootnodes` | [] | List of comma-separated enode URLs for P2P discovery bootstrap |
 | `goquorum_no_discovery` | true | Disable P2P discovery |
-| `goquorum_enable_node_permissions` | "true" | Enable permissioning. Please note that you must provide the necessary [permissions-config.json file](https://docs.goquorum.consensys.net/en/latest/Concepts/Permissioning/BasicNetworkPermissions/) |
+| `goquorum_enable_node_permissions` | true | Enable permissioning. Please note that you must provide the necessary [permissions-config.json file](https://docs.goquorum.consensys.net/en/latest/Concepts/Permissioning/BasicNetworkPermissions/) |
 | `goquorum_ptm_enabled` | false | Enable privacy |
 | `goquorum_ptm_url` | "http://127.0.0.1:9101" | URL to contact to Tessera on including port eg: `http://localhost:9101` |
 | `goquorum_user_cmdline_args` | "" | Command line args that are passed in from the user |
