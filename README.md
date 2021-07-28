@@ -87,7 +87,7 @@ All variables which can be overridden are stored in [defaults/main.yml](defaults
 | `goquorum_ptm_enabled` | false | Enable privacy |
 | `goquorum_ptm_url` | "http://127.0.0.1:9101" | URL to contact to Tessera on including port eg: `http://localhost:9101` |
 | `goquorum_user_cmdline_args` | "" | Command line args that are passed in from the user |
-| `goquorum_env_opts` | [] | Settings passed to the JVM through `BESU_OPTS` environment variable. eg: `[-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5005]s` |
+| `goquorum_env_opts` | [] | Settings passed to the GoQuorum through environment variables |
 | `goquorum_unlock` | 0 | Comma separated list of accounts to unlock |
 | `goquorum_account_password_file` | "" | Password file to use for non-interactive password input |
 

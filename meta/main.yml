@@ -2,8 +2,8 @@
 galaxy_info:
   author: ethereum
   role_name: goquorum
-  description: Geth is an ethereum client
-  company: PegaSysEng
+  description: GoQuorum is an ethereum client
+  company: Consensys
   license: license (Apache)
   min_ansible_version: 2.6
   platforms:
@@ -24,9 +24,6 @@ galaxy_info:
         - 28
         - 29
         - 30
-    - name: MacOSX
-      versions:
-        - all
   galaxy_tags:
     - goquorum
     - blockchain
