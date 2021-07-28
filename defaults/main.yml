@@ -9,7 +9,6 @@ goquorum_discovery_public_ip: "false"
 goquorum_default_ip: "127.0.0.1"
 # internal state to maintain idempotency
 goquorum_state_updates: []
-
 # Version to install
 goquorum_download_url: "https://artifacts.consensys.net/public/go-quorum/raw/versions/{{ goquorum_version }}/geth_{{ goquorum_version }}_{{ goquorum_architecture }}_amd64.tar.gz"
 
@@ -95,5 +94,3 @@ goquorum_ptm_tls_mode: "off"
 # --unlock 0 --password /config/passwords.txt \
 goquorum_unlock: 0
 goquorum_account_password_file: ""
-
-

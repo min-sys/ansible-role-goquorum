@@ -30,4 +30,3 @@
   when: ( goquorum_state_updates|length > 0 ) and
     ( goquorum_managed_service ) and
     ( ansible_os_family != "Darwin" )
-

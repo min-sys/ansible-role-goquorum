@@ -73,4 +73,3 @@
   set_fact:
     goquorum_host_ip: "{{ goquorum_default_ip }}"
   when: goquorum_host_ip == ""
-

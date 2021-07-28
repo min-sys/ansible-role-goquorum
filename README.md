@@ -113,6 +113,7 @@ Replace `x.y.z` below with the version you would like to use
       goquorum_version: vX.Y.Z
       goquorum_consensus_algorithm: "istanbul"
       goquorum_genesis_path: "/path/to/genesis_file"
+      
 ```
 
 Run with ansible-playbook:
@@ -120,11 +121,9 @@ Run with ansible-playbook:
 ansible-playbook -v /path/to/requirements.yml
 ```
 
-
 ### License
 
 Apache
-
 
 ### Author Information
 
