@@ -1,6 +1,6 @@
 ---
 galaxy_info:
-  author: ethereum
+  author: Consensys 
   role_name: goquorum
   description: GoQuorum is an ethereum client
   company: Consensys
