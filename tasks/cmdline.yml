@@ -46,7 +46,8 @@
     goquorum_cmdline_args: >
       {{goquorum_cmdline_args}}
       --istanbul.blockperiod {{goquourm_istanbul_block_period}}
-  when: goquorum_consensus_algorithm == "istanbul"
+  when: (goquorum_consensus_algorithm == "istanbul") or 
+      ( goquorum_consensus_algorithm == "qbft" )
 
 - name: Add ptm to the cmdline_args
   set_fact:
