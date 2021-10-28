@@ -28,8 +28,15 @@
       --mine
       --emitcheckpoints
       --miner.threads {{goquorum_miner_threads}}
-      --miner.etherbase {{goquorum_miner_etherbase}}
   when: goquorum_miner_enabled|bool == True
+
+- name: Add miner etherbase to the cmdline_args
+  set_fact:
+    goquorum_cmdline_args: >
+      {{goquorum_cmdline_args}}
+      --miner.etherbase {{goquorum_miner_etherbase}}
+  when: (goquorum_miner_enabled|bool == True) and
+        (goquorum_miner_etherbase != 0)
 
 - name: Add consensus algorithm - raft to the cmdline_args
   set_fact:
