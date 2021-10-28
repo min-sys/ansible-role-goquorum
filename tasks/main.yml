@@ -23,6 +23,13 @@
         msg: Please provide a valid path to the genesis file
       when: goquorum_genesis_path == ""
 
+- name: Stop goquorum if running
+  systemd:
+    name: goquorum
+    state: stopped
+  become: true
+  ignore_errors: true
+
 - name: Install goquorum
   include_tasks: "install.yml"
 

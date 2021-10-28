@@ -6,7 +6,6 @@ goquorum_architecture: "linux"
 goquorum_env_opts: []
 # default to use the private ip in cloud, set this to true to use the public ip
 goquorum_discovery_public_ip: "false"
-goquorum_default_ip: "127.0.0.1"
 # internal state to maintain idempotency
 goquorum_state_updates: []
 # Version to install
@@ -71,6 +70,7 @@ goquorum_p2p_port: 30303
 ## CLI args
 # --nat extip:{{goquorum_host_ip}}
 goquorum_host_ip: ""
+goquorum_default_ip: "127.0.0.1"
 # --verbosity # 0=silent, 1=error, 2=warn, 3=info, 4=debug, 5=detail
 goquorum_log_verbosity: 3
 # --mine --minerthreads 1 --emitcheckpoints \
