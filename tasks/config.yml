@@ -34,5 +34,5 @@
   become: true
 
 - name: Init the database
-  command: "{{goquorum_current_dir}}/goquorum init --datadir {{goquorum_data_dir}} {{goquorum_genesis_path}}"
+  command: "{{goquorum_current_dir}}/geth init --datadir {{goquorum_data_dir}} {{goquorum_genesis_path}}"
   when: goquorum_init_database

@@ -66,7 +66,7 @@
         ( azure_ip_output.status != 200 ) and
         ( gcp_ip_output.status == 200 )
   when: ( goquorum_discovery_public_ip|bool == True ) and
-    ( geth_host_ip == "" )
+    ( goquorum_host_ip == "" )
   ignore_errors: yes
 
 - name: Fallback to the ansible default ip
