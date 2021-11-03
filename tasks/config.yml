@@ -9,21 +9,6 @@
     recurse: yes
   become: true
 
-- name: Generate config file
-  template:
-    src: "{{ goquorum_config_template }}"
-    dest: "{{ goquorum_config_dir }}/config.toml"
-    owner: "{{ goquorum_user }}"
-    group: "{{ goquorum_group }}"
-    mode: 0644
-  become: true
-  register: config_toml
-
-- name: Set updated optionally to trigger a systemd restart at the end
-  set_fact:
-    goquorum_state_updates: "{{ goquorum_state_updates + ['goquorum.config_toml'] }}"
-  when: config_toml is changed
-
 - name: Create data directory
   file:
     path: "{{ goquorum_data_dir }}"

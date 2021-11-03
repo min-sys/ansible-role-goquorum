@@ -33,20 +33,20 @@ goquorum_init_database: "false"
 
 # goquorum config file args
 goquorum_network_id: 1337
-goquorum_sync_mode: "full"
-goquourm_gas_price: 0
-goquourm_gas_floor: 700000000
-goquourm_gas_ceil: 800000000
+goquorum_sync_mode: full
+goquorum_gas_price: 0
+goquorum_gas_floor: 700000000
+goquorum_gas_ceil: 800000000
 goquorum_consensus_algorithm: "istanbul"
-goquourm_istanbul_request_timeout: 10000
-goquourm_istanbul_block_period: 5
-goquourm_istanbul_epoch: 5
-goquourm_istanbul_ceil2nby3block: 0
+goquorum_istanbul_request_timeout: 10000
+goquorum_istanbul_block_period: 5
+goquorum_istanbul_epoch: 5
+goquorum_istanbul_ceil2nby3block: 0
 goquorum_raft_block_time: 50
 goquorum_raft_port: 50400
 goquorum_raft_dns_enable: "true"
 goquorum_node_identity: "GoQuorumNode"
-goquourm_no_usb: "true"
+goquorum_no_usb: "true"
 goquorum_http_enabled: "true"
 goquorum_http_host: "127.0.0.1"
 goquorum_http_port: 8545
@@ -58,6 +58,7 @@ goquorum_ws_host: "127.0.0.1"
 goquorum_ws_port: 8546
 goquorum_ws_origins: ["*"]
 goquorum_ws_api: ["admin", "db", "eth", "debug", "miner", "net", "shh", "txpool", "personal", "web3", "quorum", "{{goquorum_consensus_algorithm}}"]
+goquorum_ws_rpcprefix: "/"
 goquorum_graphql_enabled: "true"
 goquorum_graphql_virtual_hosts: ["*"]
 goquorum_graphql_cors_origins: ["*"]
@@ -66,7 +67,7 @@ goquorum_no_discovery: "true"
 goquorum_max_peers: 50
 goquorum_bootnodes: []
 goquorum_p2p_port: 30303
-
+goquorum_identity: "GoQuorumNode"
 ## CLI args
 # --nat extip:{{goquorum_host_ip}}
 goquorum_host_ip: ""

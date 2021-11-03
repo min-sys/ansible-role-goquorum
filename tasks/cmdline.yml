@@ -1,9 +1,14 @@
 ---
-- name: Add logging to the cmdline_args
+- name: Add basics to the cmdline_args
   set_fact:
     goquorum_cmdline_args: >
       {{goquorum_cmdline_args}}
       --verbosity {{goquorum_log_verbosity}}
+      --datadir {{goquorum_data_dir}}
+      --syncmode {{goquorum_sync_mode}}
+      --port {{goquorum_p2p_port}}
+      --nousb
+      --identity {{goquorum_identity}}
 
 - name: Add nodekey to the cmdline_args
   set_fact:
@@ -11,6 +16,13 @@
       {{goquorum_cmdline_args}}
       --nodekey {{goquorum_node_private_key_file}}
   when: goquorum_node_private_key_file != ""
+
+- name: Add discovery to the cmdline_args
+  set_fact:
+    goquorum_cmdline_args: >
+      {{goquorum_cmdline_args}}
+      --nodiscover
+  when: goquorum_no_discovery|bool = True
 
 - name: Add metrics to the cmdline_args
   set_fact:
@@ -52,9 +64,34 @@
   set_fact:
     goquorum_cmdline_args: >
       {{goquorum_cmdline_args}}
-      --istanbul.blockperiod {{goquourm_istanbul_block_period}}
+      --istanbul.blockperiod {{goquorum_istanbul_block_period}}
+      --istanbul.requesttimeout {{goquorum_istanbul_request_timeout}}
   when: (goquorum_consensus_algorithm == "istanbul") or 
       ( goquorum_consensus_algorithm == "qbft" )
+
+- name: Add RPC to the cmdline_args
+  set_fact:
+    goquorum_cmdline_args: >
+      {{goquorum_cmdline_args}}
+      --http
+      --http.addr {{goquorum_http_host}}
+      --http.port {{goquorum_http_port}}
+      --http.corsdomain '{{goquorum_http_cors_origins|map('to_json')|join(',')}}'
+      --http.vhosts '{{goquorum_http_virtual_hosts|map('to_json')|join(',')}}'
+      --http.api {{goquorum_http_api|map('to_json')|join(',')}}
+  when: goquorum_http_enabled|bool == True
+
+- name: Add WS to the cmdline_args
+  set_fact:
+    goquorum_cmdline_args: >
+      {{goquorum_cmdline_args}}
+      --ws
+      --ws.addr {{goquorum_ws_host}}
+      --ws.port {{goquorum_ws_port}}
+      --ws.origins '{{goquorum_ws_origins|map('to_json')|join(',')}}'
+      --ws.rpcprefix '{{goquorum_ws_rpcprefix)}}'
+      --ws.api {{goquorum_ws_api|map('to_json')|join(',')}}
+  when: goquorum_ws_enabled|bool == True
 
 - name: Add ptm to the cmdline_args
   set_fact:

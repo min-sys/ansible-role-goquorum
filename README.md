@@ -50,9 +50,9 @@ All variables which can be overridden are stored in [defaults/main.yml](defaults
 | `goquorum_network_id` | 1337 | The id of the network, also specified in the genesis file |
 | `goquorum_sync_mode` | full | Specifies the synchronization mode. Other values are 'fast' |
 | `goquorum_consensus_algorithm` | istanbul | Specifies the consensus_algorithm to use. Other values are 'raft' |
-| `goquourm_istanbul_block_period` | 5 | Default minimum difference between two consecutive block's timestamps in seconds |
-| `goquourm_istanbul_request_timeout` | 10000 | Timeout for each Istanbul round in milliseconds |
-| `goquourm_istanbul_ceil2nby3block` | 0 | The [ceil2Nby3Block](https://docs.goquorum.consensys.net/en/latest/Reference/IBFTParameters/#ceil2nby3block) sets the block number from which to use an updated formula for calculating the number of faulty nodes. T |
+| `goquorum_istanbul_block_period` | 5 | Default minimum difference between two consecutive block's timestamps in seconds |
+| `goquorum_istanbul_request_timeout` | 10000 | Timeout for each Istanbul round in milliseconds |
+| `goquorum_istanbul_ceil2nby3block` | 0 | The [ceil2Nby3Block](https://docs.goquorum.consensys.net/en/latest/Reference/IBFTParameters/#ceil2nby3block) sets the block number from which to use an updated formula for calculating the number of faulty nodes. T |
 | `goquorum_raft_block_time` | 50 | Amount of time between raft block creations in milliseconds |
 | `goquorum_raft_port` | 50400 | The port to bind for the raft transport |
 | `goquorum_raft_dns_enable` | true | Enable DNS resolution of peers |
@@ -61,8 +61,8 @@ All variables which can be overridden are stored in [defaults/main.yml](defaults
 | `goquorum_miner_threads` | 1 | Number of CPU threads to use for mining |
 | `goquorum_miner_etherbase` | 0 | Public address for block mining rewards (default = first account)  |
 | `goquorum_min_gas` | 0 | Minimum gas price for mining a transaction |
-| `goquourm_gas_ceil` | 800000000 | Target gas ceiling for mined blocks |
-| `goquourm_gas_floor` | 700000000 | Target gas floor for mined blocks  |
+| `goquorum_gas_ceil` | 800000000 | Target gas ceiling for mined blocks |
+| `goquorum_gas_floor` | 700000000 | Target gas floor for mined blocks  |
 | `goquorum_metrics_enabled` | true | Enable collection of prometheus metrics |
 | `goquorum_metrics_host` | 0.0.0.0 | pprof HTTP server listening interface |
 | `goquorum_metrics_port` | 9545 | pprof HTTP server listening port |
@@ -128,3 +128,4 @@ Apache
 ### Author Information
 
 Consensys, 2021
+
