@@ -1,0 +1,50 @@
+{
+    "sourceFile": "tasks/cmdline.yml",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 8,
+            "patches": [
+                {
+                    "date": 1645705174385,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1645707027368,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -87,9 +87,9 @@\n       {{goquorum_cmdline_args}}\n       --ws\n       --ws.addr {{goquorum_ws_host}}\n       --ws.port {{goquorum_ws_port}}\n-      --ws.origins '{{goquorum_ws_origins|map('to_json')|join(',')}}'\n+      --ws.origins '{{goquorum_http_cors_origins|map('to_json')|join(',')}}'\n       --ws.rpcprefix '{{goquorum_ws_rpcprefix)}}'\n       --ws.api {{goquorum_ws_api|map('to_json')|join(',')}}\n   when: goquorum_ws_enabled|bool == True\n \n"
+                },
+                {
+                    "date": 1645707033079,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -87,9 +87,9 @@\n       {{goquorum_cmdline_args}}\n       --ws\n       --ws.addr {{goquorum_ws_host}}\n       --ws.port {{goquorum_ws_port}}\n-      --ws.origins '{{goquorum_http_cors_origins|map('to_json')|join(',')}}'\n+      --ws.origins '{{goquorum_ws_origins|map('to_json')|join(',')}}'\n       --ws.rpcprefix '{{goquorum_ws_rpcprefix)}}'\n       --ws.api {{goquorum_ws_api|map('to_json')|join(',')}}\n   when: goquorum_ws_enabled|bool == True\n \n"
+                },
+                {
+                    "date": 1645707039978,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -88,9 +88,9 @@\n       --ws\n       --ws.addr {{goquorum_ws_host}}\n       --ws.port {{goquorum_ws_port}}\n       --ws.origins '{{goquorum_ws_origins|map('to_json')|join(',')}}'\n-      --ws.rpcprefix '{{goquorum_ws_rpcprefix)}}'\n+      --ws.rpcprefix '{{goquorum_ws_rpcprefix}}'\n       --ws.api {{goquorum_ws_api|map('to_json')|join(',')}}\n   when: goquorum_ws_enabled|bool == True\n \n - name: Add ptm to the cmdline_args\n"
+                },
+                {
+                    "date": 1645707999478,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -120,9 +120,9 @@\n   when: goquorum_user_cmdline_args != \"\"\n \n - name: Sanitize cmdline_args\n   set_fact:\n-    goquorum_cmdline_args: \"{{goquorum_cmdline_args | replace('\\n', '')}}\"\n+    goquorum_cmdline_args: \"{{goquorum_cmdline_args | replace('\\n', '') }}\"\n \n - name: Show cmdline_args\n   debug:\n     msg: \"{{goquorum_cmdline_args}}\"\n"
+                },
+                {
+                    "date": 1645708008437,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -120,9 +120,9 @@\n   when: goquorum_user_cmdline_args != \"\"\n \n - name: Sanitize cmdline_args\n   set_fact:\n-    goquorum_cmdline_args: \"{{goquorum_cmdline_args | replace('\\n', '') }}\"\n+    goquorum_cmdline_args: \"{{goquorum_cmdline_args | replace('\\n', '') | replace }}\"\n \n - name: Show cmdline_args\n   debug:\n     msg: \"{{goquorum_cmdline_args}}\"\n"
+                },
+                {
+                    "date": 1645708014990,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -120,9 +120,9 @@\n   when: goquorum_user_cmdline_args != \"\"\n \n - name: Sanitize cmdline_args\n   set_fact:\n-    goquorum_cmdline_args: \"{{goquorum_cmdline_args | replace('\\n', '') | replace }}\"\n+    goquorum_cmdline_args: \"{{goquorum_cmdline_args | replace('\\n', '') | replace('\"')}}\"\n \n - name: Show cmdline_args\n   debug:\n     msg: \"{{goquorum_cmdline_args}}\"\n"
+                },
+                {
+                    "date": 1645708022102,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -120,9 +120,9 @@\n   when: goquorum_user_cmdline_args != \"\"\n \n - name: Sanitize cmdline_args\n   set_fact:\n-    goquorum_cmdline_args: \"{{goquorum_cmdline_args | replace('\\n', '') | replace('\"')}}\"\n+    goquorum_cmdline_args: \"{{goquorum_cmdline_args | replace('\\n', '') | replace('\"', '')}}\"\n \n - name: Show cmdline_args\n   debug:\n     msg: \"{{goquorum_cmdline_args}}\"\n"
+                },
+                {
+                    "date": 1645708390040,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -120,9 +120,9 @@\n   when: goquorum_user_cmdline_args != \"\"\n \n - name: Sanitize cmdline_args\n   set_fact:\n-    goquorum_cmdline_args: \"{{goquorum_cmdline_args | replace('\\n', '') | replace('\"', '')}}\"\n+    goquorum_cmdline_args: \"{{goquorum_cmdline_args | replace('\\n', '') | replace('\\\"', '')}}\"\n \n - name: Show cmdline_args\n   debug:\n     msg: \"{{goquorum_cmdline_args}}\"\n"
+                }
+            ],
+            "date": 1645705174385,
+            "name": "Commit-0",
+            "content": "---\n- name: Add basics to the cmdline_args\n  set_fact:\n    goquorum_cmdline_args: >\n      {{goquorum_cmdline_args}}\n      --verbosity {{goquorum_log_verbosity}}\n      --datadir {{goquorum_data_dir}}\n      --syncmode {{goquorum_sync_mode}}\n      --port {{goquorum_p2p_port}}\n      --nousb\n      --identity {{goquorum_identity}}\n\n- name: Add nodekey to the cmdline_args\n  set_fact:\n    goquorum_cmdline_args: >\n      {{goquorum_cmdline_args}}\n      --nodekey {{goquorum_node_private_key_file}}\n  when: goquorum_node_private_key_file != \"\"\n\n- name: Add discovery to the cmdline_args\n  set_fact:\n    goquorum_cmdline_args: >\n      {{goquorum_cmdline_args}}\n      --nodiscover\n  when: goquorum_no_discovery|bool == True\n\n- name: Add metrics to the cmdline_args\n  set_fact:\n    goquorum_cmdline_args: >\n      {{goquorum_cmdline_args}}\n      --metrics --pprof\n      --pprof.addr {{ goquorum_metrics_host}}\n      --pprof.port {{ goquorum_metrics_port}}\n  when: goquorum_metrics_enabled|bool == True\n\n- name: Add miner to the cmdline_args\n  set_fact:\n    goquorum_cmdline_args: >\n      {{goquorum_cmdline_args}}\n      --mine\n      --emitcheckpoints\n      --miner.threads {{goquorum_miner_threads}}\n  when: goquorum_miner_enabled|bool == True\n\n- name: Add miner etherbase to the cmdline_args\n  set_fact:\n    goquorum_cmdline_args: >\n      {{goquorum_cmdline_args}}\n      --miner.etherbase {{goquorum_miner_etherbase}}\n  when: (goquorum_miner_enabled|bool == True) and\n        (goquorum_miner_etherbase != 0)\n\n- name: Add consensus algorithm - raft to the cmdline_args\n  set_fact:\n    goquorum_cmdline_args: >\n      {{goquorum_cmdline_args}}\n      --raft\n      --raftport {{goquorum_raft_port}}\n      --raftblocktime {{goquorum_raft_block_time}}\n      --raftdnsenable {{goquorum_raft_dns_enable}}\n  when: goquorum_consensus_algorithm == \"raft\"\n\n- name: Add consensus algorithm - istanbul to the cmdline_args\n  set_fact:\n    goquorum_cmdline_args: >\n      {{goquorum_cmdline_args}}\n      --istanbul.blockperiod {{goquorum_istanbul_block_period}}\n      --istanbul.requesttimeout {{goquorum_istanbul_request_timeout}}\n  when: (goquorum_consensus_algorithm == \"istanbul\") or \n      ( goquorum_consensus_algorithm == \"qbft\" )\n\n- name: Add RPC to the cmdline_args\n  set_fact:\n    goquorum_cmdline_args: >\n      {{goquorum_cmdline_args}}\n      --http\n      --http.addr {{goquorum_http_host}}\n      --http.port {{goquorum_http_port}}\n      --http.corsdomain '{{goquorum_http_cors_origins|map('to_json')|join(',')}}'\n      --http.vhosts '{{goquorum_http_virtual_hosts|map('to_json')|join(',')}}'\n      --http.api {{goquorum_http_api|map('to_json')|join(',')}}\n  when: goquorum_http_enabled|bool == True\n\n- name: Add WS to the cmdline_args\n  set_fact:\n    goquorum_cmdline_args: >\n      {{goquorum_cmdline_args}}\n      --ws\n      --ws.addr {{goquorum_ws_host}}\n      --ws.port {{goquorum_ws_port}}\n      --ws.origins '{{goquorum_ws_origins|map('to_json')|join(',')}}'\n      --ws.rpcprefix '{{goquorum_ws_rpcprefix)}}'\n      --ws.api {{goquorum_ws_api|map('to_json')|join(',')}}\n  when: goquorum_ws_enabled|bool == True\n\n- name: Add ptm to the cmdline_args\n  set_fact:\n    goquorum_cmdline_args: >\n      {{goquorum_cmdline_args}}\n      --goquorum_ptm_timeout {{goquorum_ptm_timeout}}\n      --goquorum_ptm_url {{goquorum_ptm_url}}\n      --goquorum_ptm_http_writebuffersize {{goquorum_ptm_http_writebuffersize}}\n      --goquorum_ptm_http_readbuffersize {{goquorum_ptm_http_readbuffersize}}\n      --goquorum_ptm_tls_mode {{goquorum_ptm_tls_mode}}\n  when: goquorum_ptm_enabled|bool == True\n\n- name: Add accounts to the cmdline_args\n  set_fact:\n    goquorum_cmdline_args: >\n      {{goquorum_cmdline_args}}\n      --goquorum_unlock {{goquorum_unlock}}\n      --goquorum_account_password_file {{goquorum_account_password_file}}\n  when: goquorum_account_password_file != \"\"\n\n- name: Add custom cmdline_args to the list\n  set_fact:\n    goquorum_cmdline_args: >\n      {{goquorum_cmdline_args}}\n      {{goquorum_user_cmdline_args}}\n  when: goquorum_user_cmdline_args != \"\"\n\n- name: Sanitize cmdline_args\n  set_fact:\n    goquorum_cmdline_args: \"{{goquorum_cmdline_args | replace('\\n', '')}}\"\n\n- name: Show cmdline_args\n  debug:\n    msg: \"{{goquorum_cmdline_args}}\"\n"
+        }
+    ]
+}

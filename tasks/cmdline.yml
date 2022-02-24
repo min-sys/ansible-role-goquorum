@@ -22,7 +22,7 @@
     goquorum_cmdline_args: >
       {{goquorum_cmdline_args}}
       --nodiscover
-  when: goquorum_no_discovery|bool = True
+  when: goquorum_no_discovery|bool == True
 
 - name: Add metrics to the cmdline_args
   set_fact:
@@ -89,7 +89,7 @@
       --ws.addr {{goquorum_ws_host}}
       --ws.port {{goquorum_ws_port}}
       --ws.origins '{{goquorum_ws_origins|map('to_json')|join(',')}}'
-      --ws.rpcprefix '{{goquorum_ws_rpcprefix)}}'
+      --ws.rpcprefix '{{goquorum_ws_rpcprefix}}'
       --ws.api {{goquorum_ws_api|map('to_json')|join(',')}}
   when: goquorum_ws_enabled|bool == True
 
@@ -121,7 +121,7 @@
 
 - name: Sanitize cmdline_args
   set_fact:
-    goquorum_cmdline_args: "{{goquorum_cmdline_args | replace('\n', '')}}"
+    goquorum_cmdline_args: "{{goquorum_cmdline_args | replace('\n', '') | replace('\"', '')}}"
 
 - name: Show cmdline_args
   debug:
