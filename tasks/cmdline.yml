@@ -9,6 +9,7 @@
       --port {{goquorum_p2p_port}}
       --nousb
       --identity {{goquorum_identity}}
+      --miner.gasprice {{goquorum_gas_price}}
 
 - name: Add nodekey to the cmdline_args
   set_fact:
