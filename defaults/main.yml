@@ -34,7 +34,7 @@ goquorum_init_database: "false"
 # goquorum config file args
 goquorum_network_id: 1337
 goquorum_sync_mode: full
-goquorum_gas_price: 0
+goquorum_gas_price: 1
 goquorum_gas_floor: 700000000
 goquorum_gas_ceil: 800000000
 goquorum_consensus_algorithm: "istanbul"
