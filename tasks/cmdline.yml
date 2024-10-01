@@ -90,7 +90,6 @@
       --ws.addr {{goquorum_ws_host}}
       --ws.port {{goquorum_ws_port}}
       --ws.origins '{{goquorum_ws_origins|map('to_json')|join(',')}}'
-      --ws.rpcprefix '{{goquorum_ws_rpcprefix}}'
       --ws.api {{goquorum_ws_api|map('to_json')|join(',')}}
   when: goquorum_ws_enabled|bool == True
 
